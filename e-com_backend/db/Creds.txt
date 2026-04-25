@@ -1,0 +1,7 @@
+Admin Login : 
+admin@gmail.com
+admin@123
+
+User Login
+xyz@gmail.com
+123456

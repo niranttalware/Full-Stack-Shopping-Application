@@ -6,55 +6,43 @@ React (frontend), Node.js + Express (backend), MySQL (database), and TailwindCSS
 This project includes complete shopping features for customers along with a secure Admin Panel for managing products and users.
 
 
-🚀 Features
+✨ Features
+User Features:
 
-⭐ Customer Features
-🏠 Home Page – Displays all products from all categories
-🛒 Shop Page – Browse category-wise products
-Electronics → Smartwatches, Laptops, Earphones, Accessories & Gadgets
-MensWear → Casual, Western, Jackets, Traditional, Shoes
-🔍 Product Details Page – View full product details
-🛍️ Add to Cart – Add, increase, decrease, remove products
-💳 Checkout Page – Place order with address & payment
-📦 Your Orders Page – Display all placed orders
-🚚 Order Details Page – Shows full order tracking information
-👤 Profile Page – User info + order history
+🔐 User authentication (Sign up, Login, Protected routes)
+🛍️ Browse and search products by categories
+⭐ View detailed product information with ratings
+🛒 Shopping cart management with persistent storage
+💳 Checkout and order placement
+📋 Order history and order details tracking
+👤 User profile management
+Admin Features:
 
-⭐ Admin Features
-Admin panel opens only with Admin Credentials
-📊 Admin Dashboard
-Total users
-Total products
-📦 Manage Products
-Add Product
-Edit Product
-Delete Product
-View all products
-👥 Manage Users
-View all users
-Delete users
+📊 Admin dashboard for product management
+🏷️ Category management with hierarchical structure
+📦 Product CRUD operations
+📈 Manage product inventory
+Technical Features:
 
+🎨 Responsive design with Tailwind CSS
+✅ Automated testing with Playwright
+🔄 Context API for state management (Search, Cart, Orders, Auth)
+💾 SQLite database for persistent data storage
+🛠️ Tech Stack
+Frontend:
 
+React with TypeScript
+Tailwind CSS
+Playwright (Testing)
+Backend:
 
-🗄️ Tech Stack
-
-Frontend
-React.js
-React Router
-Axios
-TailwindCSS
-Context API / State Management
-
-Backend
-Node.js
-Express.js
+Node.js with Express.js
+SQLite Database
 JWT Authentication
-Bcrypt / Password hashing
 
 Database
 MySQL
 Sequelize / MySQL queries
-
 
 
 ⚙️ Installation & Setup

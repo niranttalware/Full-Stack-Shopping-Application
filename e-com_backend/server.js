@@ -1,15 +1,16 @@
-// backend/server.js
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+
 app.use(
   cors({
     origin: true,
     credentials: true,
   }),
 );
+
 app.use(express.json());
 
 const pool = require("./db");
@@ -33,9 +34,11 @@ console.log("DB_PORT:", process.env.DB_PORT);
 const productsRouter = require("./routes/products");
 const authRouter = require("./routes/auth");
 
-// mount routers
-app.use("/api/products", productsRouter); // GET /api/products, /api/products/:id, /api/products/category/:categoryName
-app.use("/api/auth", authRouter); // POST /api/auth/signup, POST /api/auth/login
+// Correct backend routes
+app.use("/api/products", productsRouter);
+app.use("/api/auth", authRouter);
 
+// Correct backend port
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

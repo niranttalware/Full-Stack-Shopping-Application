@@ -1,8 +1,14 @@
 import { test, expect, Page } from "@playwright/test";
 
+declare const process: {
+  env: {
+    REACT_APP_API_URL: string;
+  };
+};
+
 const USER_EMAIL = "xyz@gmail.com";
 const USER_PASSWORD = "123456";
-const PRODUCTS_API = "${process.env.REACT_APP_API_URL}/api/products";
+const PRODUCTS_API = `${process.env.REACT_APP_API_URL}/api/products`;
 
 type Product = {
   id: string;

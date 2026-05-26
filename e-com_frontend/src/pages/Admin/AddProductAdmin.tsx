@@ -36,7 +36,7 @@ const AddProductAdmin = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
 
@@ -128,7 +128,7 @@ const AddProductAdmin = () => {
       },
     };
 
-    const res = await fetch("http://localhost:5000/api/products", {
+    const res = await fetch("${import.meta.env.VITE_API_URL}/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -158,7 +158,7 @@ const AddProductAdmin = () => {
   const generateShortId = (
     mainCategory: string,
     category: string,
-    existingCount: number
+    existingCount: number,
   ) => {
     const code = (text: string) => text.trim().toUpperCase().slice(0, 3);
 
@@ -274,7 +274,7 @@ const AddProductAdmin = () => {
                   <option key={subCat} value={subCat}>
                     {subCat}
                   </option>
-                )
+                ),
               )}
           </select>
 

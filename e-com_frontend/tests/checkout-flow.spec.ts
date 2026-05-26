@@ -2,7 +2,7 @@ import { test, expect, Page } from "@playwright/test";
 
 const USER_EMAIL = "xyz@gmail.com";
 const USER_PASSWORD = "123456";
-const PRODUCTS_API = "http://localhost:5000/api/products";
+const PRODUCTS_API = "${import.meta.env.VITE_API_URL}/api/products";
 
 type Product = {
   id: string;

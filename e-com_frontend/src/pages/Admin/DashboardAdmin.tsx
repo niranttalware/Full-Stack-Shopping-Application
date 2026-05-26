@@ -17,7 +17,9 @@ const DashboardAdmin = () => {
     const loadStats = async () => {
       try {
         // ----------- PRODUCTS COUNT ------------
-        const prodRes = await fetch("http://localhost:5000/api/products");
+        const prodRes = await fetch(
+          "${import.meta.env.VITE_API_URL}/api/products",
+        );
         const productData = await prodRes.json();
 
         let productCount = 0;
@@ -29,7 +31,9 @@ const DashboardAdmin = () => {
         });
 
         // ----------- USERS COUNT (CORRECT ROUTE) ------------
-        const userRes = await fetch("http://localhost:5000/api/auth/users");
+        const userRes = await fetch(
+          "${import.meta.env.VITE_API_URL}/api/auth/users",
+        );
         const userData = await userRes.json();
 
         setStats({

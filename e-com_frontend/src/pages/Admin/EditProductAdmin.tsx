@@ -14,7 +14,9 @@ const EditProductAdmin = () => {
 
   useEffect(() => {
     const loadProduct = async () => {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`);
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/products/${id}`,
+      );
       const data = await res.json();
 
       setForm({
@@ -35,7 +37,7 @@ const EditProductAdmin = () => {
   if (!form) return <p>Loading...</p>;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -75,14 +77,17 @@ const EditProductAdmin = () => {
       },
     };
 
-    const res = await fetch(`http://localhost:5000/api/products/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/products/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
       },
-      body: JSON.stringify(body),
-    });
+    );
 
     if (res.ok) {
       toast.success("Product updated successfully!");

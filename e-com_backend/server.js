@@ -7,6 +7,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const pool = require("./db");
+
+(async () => {
+  try {
+    const connection = await pool.getConnection();
+    console.log("✅ Database connected successfully");
+    connection.release();
+  } catch (err) {
+    console.error("❌ Database connection failed:", err);
+  }
+})();
+
 console.log("DB_HOST:", process.env.DB_HOST);
 console.log("DB_USER:", process.env.DB_USER);
 console.log("DB_NAME:", process.env.DB_NAME);

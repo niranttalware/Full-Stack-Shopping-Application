@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Eye, EyeOff } from "lucide-react";
+import { apiUrl } from "../../api/apiUrl";
 
 const EditProductAdmin = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const EditProductAdmin = () => {
   useEffect(() => {
     const loadProduct = async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/products/${id}`,
+        apiUrl(`/api/products/${id}`),
       );
       const data = await res.json();
 
@@ -78,7 +79,7 @@ const EditProductAdmin = () => {
     };
 
     const res = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/products/${id}`,
+      apiUrl(`/api/products/${id}`),
       {
         method: "PUT",
         headers: {

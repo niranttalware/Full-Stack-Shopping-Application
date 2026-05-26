@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AlertTriangle, ChevronDown, ChevronRight } from "lucide-react";
+import { apiUrl } from "../../api/apiUrl";
 
 /* TYPE GUARD → ensures safe grouping */
 const isMainCategory = (cat: any): cat is "Electronics" | "MensWear" => {
@@ -18,7 +19,7 @@ const ProductsAdmin = () => {
 
   // Fetch products
   const getProducts = async () => {
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
+    const res = await fetch(apiUrl("/api/products"));
     const data = await res.json();
 
     const extracted: any[] = [];
@@ -49,7 +50,7 @@ const ProductsAdmin = () => {
 
     const token = localStorage.getItem("token");
 
-    await fetch(`${process.env.REACT_APP_API_URL}/api/products/${deleteId}`, {
+    await fetch(apiUrl(`/api/products/${deleteId}`), {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

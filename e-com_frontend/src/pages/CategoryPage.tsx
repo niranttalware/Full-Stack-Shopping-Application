@@ -6,7 +6,6 @@ import { useCartStore } from "../store/useCartStore";
 import toast from "react-hot-toast";
 import { ShoppingCart, IndianRupee, Search } from "lucide-react";
 import Rating from "../Components/Rating";
-import "../styles/shimmer.css";
 import { useSearch } from "../context/SearchContext";
 
 const ProductSkeleton: React.FC = () => {
@@ -124,12 +123,13 @@ const CategoryPage: React.FC = () => {
 
       const allProducts: Product[] = Object.values(data).flatMap(
         (mainCategory) =>
-          Object.values(mainCategory as Record<string, Product[]>).flat()
+          Object.values(mainCategory as Record<string, Product[]>).flat(),
       ) as Product[];
 
       const filtered = allProducts.filter(
         (p) =>
-          p.category.trim().toLowerCase() === categoryName?.trim().toLowerCase()
+          p.category.trim().toLowerCase() ===
+          categoryName?.trim().toLowerCase(),
       );
 
       setProducts(filtered);
@@ -160,7 +160,7 @@ const CategoryPage: React.FC = () => {
   const filteredProducts = products.filter(
     (p) =>
       p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchTerm.toLowerCase())
+      p.category.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   if (searchTerm) {

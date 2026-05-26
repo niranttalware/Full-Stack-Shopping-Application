@@ -44,3 +44,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Vercel deployment (important)
+
+This frontend must call a **public** backend URL in production. Requests like `http://localhost:5000/...` will fail on Vercel because `localhost` refers to the visitor’s own computer (loopback), not your server.
+
+Set this environment variable in **Vercel → Project → Settings → Environment Variables** (Production + Preview as needed) and redeploy:
+
+- `REACT_APP_API_URL` = `https://<your-backend-domain>` (example: `https://full-stack-shopping-application.onrender.com`)

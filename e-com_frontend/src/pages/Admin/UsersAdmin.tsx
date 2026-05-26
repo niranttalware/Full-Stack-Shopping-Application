@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { apiUrl } from "../../api/apiUrl";
 
 const UsersAdmin = () => {
   const [users, setUsers] = useState<any[]>([]);
   const token = localStorage.getItem("token");
 
   const loadUsers = async () => {
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/users`);
+    const res = await fetch(apiUrl("/api/auth/users"));
     const data = await res.json();
     setUsers(data);
   };
 
   const deleteUser = async (id: number) => {
-    await fetch(`${process.env.REACT_APP_API_URL}/api/auth/user/${id}`, {
+    await fetch(apiUrl(`/api/auth/user/${id}`), {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

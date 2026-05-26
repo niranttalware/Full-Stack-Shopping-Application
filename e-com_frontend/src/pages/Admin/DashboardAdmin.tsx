@@ -5,6 +5,7 @@ import AddProductAdmin from "./AddProductAdmin";
 import EditProductAdmin from "./EditProductAdmin";
 import UsersAdmin from "./UsersAdmin";
 import ProductsAdmin from "./ProductsAdmin";
+import { apiUrl } from "../../api/apiUrl";
 
 const DashboardAdmin = () => {
   /* ---------------------------- DASHBOARD STATS ---------------------------- */
@@ -17,9 +18,7 @@ const DashboardAdmin = () => {
     const loadStats = async () => {
       try {
         // ----------- PRODUCTS COUNT ------------
-        const prodRes = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/products`,
-        );
+        const prodRes = await fetch(apiUrl("/api/products"));
         const productData = await prodRes.json();
 
         let productCount = 0;
@@ -31,9 +30,7 @@ const DashboardAdmin = () => {
         });
 
         // ----------- USERS COUNT (CORRECT ROUTE) ------------
-        const userRes = await fetch(
-          `${process.env.REACT_APP_API_URL}/api/auth/users`,
-        );
+        const userRes = await fetch(apiUrl("/api/auth/users"));
         const userData = await userRes.json();
 
         setStats({

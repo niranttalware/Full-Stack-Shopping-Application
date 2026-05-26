@@ -1,6 +1,7 @@
 // src/store/useAuthStore.ts
 import { create } from "zustand";
 import toast from "react-hot-toast";
+import { apiUrl } from "../api/apiUrl";
 
 interface AuthUser {
   id?: number;
@@ -21,14 +22,13 @@ interface AuthState {
   loadUser: () => void;
 }
 
-const API_URL = `${process.env.REACT_APP_API_URL}/api/auth`;
+const API_URL = apiUrl("/api/auth");
 
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   token: null,
   loading: true,
 
-  // ✅ Signup — calls backend
   signup: async (user) => {
     try {
       const res = await fetch(`${API_URL}/signup`, {
@@ -48,14 +48,14 @@ export const useAuthStore = create<AuthState>((set) => ({
           style: { marginTop: "60px" },
         });
         return true;
-      } else {
-        const data = await res.json();
-        toast.error(data.message || "Signup failed", {
-          position: "top-center",
-          style: { marginTop: "60px" },
-        });
-        return false;
       }
+
+      const data = await res.json();
+      toast.error(data.message || "Signup failed", {
+        position: "top-center",
+        style: { marginTop: "60px" },
+      });
+      return false;
     } catch (error) {
       console.error("Signup error:", error);
       toast.error("Server error during signup", {
@@ -66,7 +66,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 
-  // ✅ Login — calls backend
   login: async ({ email, password }) => {
     try {
       const res = await fetch(`${API_URL}/login`, {
@@ -85,11 +84,8 @@ export const useAuthStore = create<AuthState>((set) => ({
       }
 
       const data = await res.json();
-
-      // Save token + user in localStorage
       localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
-
       set({ user: data.user, token: data.token });
 
       toast.success("✅ Logged in successfully!", {
@@ -107,14 +103,12 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 
-  // ✅ Logout
   logout: () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     set({ user: null, token: null });
   },
 
-  // ✅ Load user
   loadUser: () => {
     const storedUser = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -125,3 +119,4 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 }));
+

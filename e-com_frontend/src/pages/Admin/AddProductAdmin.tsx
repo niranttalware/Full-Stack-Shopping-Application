@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Eye, EyeOff } from "lucide-react";
 import { fetchCategoryTree } from "../../api/categories";
+import { apiUrl } from "../../api/apiUrl";
 
 const AddProductAdmin = () => {
   const navigate = useNavigate();
@@ -128,7 +129,7 @@ const AddProductAdmin = () => {
       },
     };
 
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/products`, {
+    const res = await fetch(apiUrl("/api/products"), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const DashboardAdmin = () => {
       try {
         // ----------- PRODUCTS COUNT ------------
         const prodRes = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/products",
+          "${process.env.REACT_APP_API_URL}/api/products",
         );
         const productData = await prodRes.json();
 
@@ -32,7 +32,7 @@ const DashboardAdmin = () => {
 
         // ----------- USERS COUNT (CORRECT ROUTE) ------------
         const userRes = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/auth/users",
+          "${process.env.REACT_APP_API_URL}/api/auth/users",
         );
         const userData = await userRes.json();
 

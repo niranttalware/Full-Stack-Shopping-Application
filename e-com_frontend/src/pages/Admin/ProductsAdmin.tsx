@@ -18,7 +18,7 @@ const ProductsAdmin = () => {
 
   // Fetch products
   const getProducts = async () => {
-    const res = await fetch("${import.meta.env.VITE_API_URL}/api/products");
+    const res = await fetch("${process.env.REACT_APP_API_URL}/api/products");
     const data = await res.json();
 
     const extracted: any[] = [];
@@ -49,7 +49,7 @@ const ProductsAdmin = () => {
 
     const token = localStorage.getItem("token");
 
-    await fetch(`${import.meta.env.VITE_API_URL}/api/products/${deleteId}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/products/${deleteId}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

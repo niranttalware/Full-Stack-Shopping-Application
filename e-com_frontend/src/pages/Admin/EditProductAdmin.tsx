@@ -15,7 +15,7 @@ const EditProductAdmin = () => {
   useEffect(() => {
     const loadProduct = async () => {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/products/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/products/${id}`,
       );
       const data = await res.json();
 
@@ -78,7 +78,7 @@ const EditProductAdmin = () => {
     };
 
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/products/${id}`,
+      `${process.env.REACT_APP_API_URL}/api/products/${id}`,
       {
         method: "PUT",
         headers: {

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const PRODUCTS_API = "${import.meta.env.VITE_API_URL}/api/products";
+const PRODUCTS_API = "${process.env.REACT_APP_API_URL}/api/products";
 
 type Product = {
   id: string;
